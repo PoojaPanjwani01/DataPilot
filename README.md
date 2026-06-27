@@ -4,7 +4,7 @@ DataPilot is a production-grade, secure, and intuitive ChatGPT-style conversatio
 
 ---
 
-## 📖 Table of Contents
+## Table of Contents
 * [Project Overview](#-project-overview)
 * [Features](#-features)
 * [Screenshots](#-screenshots)
@@ -18,12 +18,12 @@ DataPilot is a production-grade, secure, and intuitive ChatGPT-style conversatio
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 DataPilot bridges the gap between conversational English query inputs and structured database queries. Users type questions (e.g., *"What is the average experience by industry?"*), and DataPilot translates the question to an optimized SQL statement, parses it using Abstract Syntax Tree (AST) validation to block unauthorized actions, executes the query against PostgreSQL using restricted read-only permissions, and renders results, charts, and AI-generated insights.
 
 ---
 
-## ✨ Features
+## Features
 * **ChatGPT-Style Sidebar**: Fast switching between active and past conversation threads, with inline "+ New Analysis" buttons.
 * **Persistent Dataset Upload**: A dedicated popover 옆 to the chat input enables immediate dataset preview, validation, and database import.
 * **Execution Metadata**: Detailed telemetry including execution latency, row/column counts, and target database mappings displayed per message.
@@ -32,31 +32,31 @@ DataPilot bridges the gap between conversational English query inputs and struct
 
 ---
 
-## 🎨 Screenshots
+## Screenshots
 
-### 🏠 Dashboard Overview
+### Dashboard Overview
 Displays platform KPIs (System Status, Datasets count, Schema Tables, Avg Latencies) along with query history logs and active dataset listings.
 ![Dashboard Overview](file:///C:/Users/POOJA/.gemini/antigravity/brain/35889443-d237-486a-ae2d-27cdf7e88031/dashboard_page_screenshot_1780232132683.png)
 
-### 💬 AI Analyst Landing Page
+### AI Analyst Landing Page
 The primary workspace displaying quick start suggestion chips and quick upload panels.
 ![AI Analyst Welcome](file:///C:/Users/POOJA/.gemini/antigravity/brain/35889443-d237-486a-ae2d-27cdf7e88031/ai_analyst_welcome_screenshot_1780232154727.png)
 
-### 💬 Active Conversation Feed
+### Active Conversation Feed
 Chronological user and assistant chat message thread highlighting Results, SQL, Charts, and Insights.
 ![Active Conversation](file:///C:/Users/POOJA/.gemini/antigravity/brain/35889443-d237-486a-ae2d-27cdf7e88031/active_conversation_screenshot_1780232171493.png)
 
-### 📂 Dataset Upload Popover
+### Dataset Upload Popover
 Integrated drag-and-drop area next to the bottom chat input supporting CSV/XLSX uploads.
 ![Dataset Upload Flow](file:///C:/Users/POOJA/.gemini/antigravity/brain/35889443-d237-486a-ae2d-27cdf7e88031/dataset_upload_flow_screenshot_1780232189929.png)
 
-### 🗂 Schema Explorer
+### Schema Explorer
 A two-panel table listing detailing column definitions and raw SQL datatypes.
 ![Schema Explorer](file:///C:/Users/POOJA/.gemini/antigravity/brain/35889443-d237-486a-ae2d-27cdf7e88031/schema_explorer_screenshot_1780232206415.png)
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The system runs on a decoupled client-server architecture:
 1. **Frontend (Streamlit)**: Manages layout states, renders conversational message feeds, popovers, and Plotly visualization charts.
@@ -68,7 +68,7 @@ For more details, see [ARCHITECTURE.md](file:///c:/Users/POOJA/Desktop/ai-sql-ag
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 * **Frontend**: Streamlit, Plotly Express, Pandas, HTTPX
 * **Backend**: FastAPI, Uvicorn, Pydantic, SQLAlchemy
 * **Database**: PostgreSQL 15, SQLAlchemy, Psycopg2-binary
@@ -77,7 +77,7 @@ For more details, see [ARCHITECTURE.md](file:///c:/Users/POOJA/Desktop/ai-sql-ag
 
 ---
 
-## 💻 Installation Guide
+## Installation Guide
 
 ### Prerequisites
 * Docker and Docker Compose installed.
@@ -107,7 +107,7 @@ For details on local setups, check [DEPLOYMENT.md](file:///c:/Users/POOJA/Deskto
 
 ---
 
-## 📖 Usage Guide
+## Usage Guide
 1. Open the browser at `http://localhost:8501`.
 2. Navigate to **AI Analyst** in the sidebar.
 3. Choose a suggestion chip or type your question in the chat input at the bottom (e.g. *"Show top 5 job titles by average salary"*).
@@ -116,7 +116,7 @@ For details on local setups, check [DEPLOYMENT.md](file:///c:/Users/POOJA/Deskto
 
 ---
 
-## 📂 Dataset Upload Workflow
+## Dataset Upload Workflow
 1. Click the **Upload Dataset** button next to the bottom chat input box.
 2. Select a `.csv` or `.xlsx` file.
 3. DataPilot validates metadata (max 50 MB, schema limits) and parses the file structure.
@@ -125,7 +125,7 @@ For details on local setups, check [DEPLOYMENT.md](file:///c:/Users/POOJA/Deskto
 
 ---
 
-## 🔮 Future Improvements
+## Future Improvements
 * **Advanced Visualizations**: Support multi-axis line graphs, scatter plots, and correlation charts.
 * **Vector Embeddings Cache**: Implement a semantic cache for past query translations to bypass the LLM for repeated questions.
 * **Enhanced Multi-Schema Join**: Enable complex join generation across different database databases or uploaded tables.

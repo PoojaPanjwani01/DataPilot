@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: sql_agent_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_master_password
+      POSTGRES_DB: ai_sql_agent
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ai_sql_agent"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: sql_agent_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Override DATABASE_URL to use docker internal service name "db" instead of "localhost"
+      - DATABASE_URL=postgresql://db_readonly:readonly_user_pass@db:5432/ai_sql_agent
+      - DATABASE_WRITE_URL=postgresql://dataset_manager:dataset_manager_pass@db:5432/ai_sql_agent
+
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: sql_agent_frontend
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    environment:
+      # Override BACKEND_URL to use docker internal service name "backend"
+      - BACKEND_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  pgdata:

@@ -1,0 +1,11 @@
+Database Schema Context:
+{schema_context}
+
+User Question:
+{user_question}
+
+Generate a single SELECT SQL query to answer the user question based on the provided schema context.
+Remember:
+- Only select fields and tables from the schema context.
+- Output ONLY raw valid SQL.
+- If the question cannot be answered with the current schema, return "UNSUPPORTED_QUERY".

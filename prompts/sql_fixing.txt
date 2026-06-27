@@ -1,0 +1,11 @@
+Database Schema Context:
+{schema_context}
+
+Failed SQL Statement:
+{failed_sql}
+
+Database Error Message:
+{error_message}
+
+Analyze the error and output a corrected, single SELECT SQL statement that performs the intended data retrieval successfully.
+Do not include any explanation. Output ONLY the raw SQL query.
